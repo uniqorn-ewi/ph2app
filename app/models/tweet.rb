@@ -1,3 +1,10 @@
 class Tweet < ApplicationRecord
-  validates :content, presence: true, length: { maximum: 140 }
+  validate :add_errors
+    def add_errors
+      if content.blank?
+        errors[:base] << "つぶやきを入力してください"
+      elsif content.gsub(/[\r\n]/, '').length > 140
+        errors[:base] << "140文字以内で入力してください"
+      end
+    end
 end

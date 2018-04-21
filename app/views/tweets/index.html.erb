@@ -1,16 +1,48 @@
-<h1>つぶやき一覧</h1>
+<div>
+<div class="AppContent">
+<div class="AppContainer">
+
+<div class="content-main clearfix">
 <p><%= notice %></p>
-<table>
-  <tr>
-    <th>内容</th>
-  </tr>
+
+<div class="Grid"><div class="Grid-cell size1of6"></div>
+
+<div class="Grid-cell size2of3">
+<div class="Tw-container">
+<ol class="items">
 <% @tweets.each do |tweet| %>
-  <tr>
-    <td><%= tweet.content %></td>
-    <td><%= link_to '詳細を確認する', tweet_path(tweet.id) %></td>
-    <td><%= link_to "つぶやきを編集する", edit_tweet_path(tweet.id) %></td>
-    <td><%= link_to "つぶやきを削除する", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
+
+<li class="item">
+<div class="Tw">
+<div class="content">
+  <div><p class="TwTextSize"><%= tweet.content %></p></div>
+
+  <div class="item-footer"><div class="actionList">
+    <div class="action">
+    <button class="actionButton btn-edit" type="button">
+      <%= link_to "編集", edit_tweet_path(tweet.id) %>
+    </button>
+    </div>
+
+    <div class="action">
+    <button class="actionButton btn-delete" type="button">
+      <%= link_to "削除", tweet_path(tweet.id), method: :delete, data:{confirm:'本当に削除していいですか？'} %>
+    </button>
+    </div>
+  </div></div>
+</div>
+</div>
+</li>
+
 <% end %>
-</table>
-<%= link_to '新しくつぶやきを投稿する', new_tweet_path %>
+</ol>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>

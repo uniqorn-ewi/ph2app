@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Phase2app</title>
     <%= csrf_meta_tags %>
     
@@ -11,6 +12,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page">
+      <header class="header">
+        <div class="top-logo">
+          <p><%= link_to "HOME", '/', class: "top-title" %></p>
+        </div>
+        <div class="top-items">
+          <ul>
+            <li><%= link_to "つぶやき一覧", tweets_path, class: "top-item" %></li>
+            <li><%= link_to "新規投稿",  new_tweet_path, class: "top-item" %></li>
+          </ul>
+        </div>
+      </header>
+      
+      <%= yield %>
+      
+      <footer class="footer">
+        <div class="footer-content">
+          <p>Dive into Code test application</p>
+        </div>
+      </footer>
+      <div id="page-top-btn" class="page-top-btn">
+        <p><a class="move-page-top" id="move-page-top">▲</a></p>
+      </div>
+    </div>
   </body>
 </html>

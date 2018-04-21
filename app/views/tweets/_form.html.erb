@@ -1,8 +1,9 @@
+<div id="dialog-form">
 <%= form_with(model: @tweet, local: true, url: choose_new_or_edit) do |form| %>
   <% if @tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+    <div id="error_explanation" class="clearfix">
       <ul>
+        <li>入力エラー：</li>
       <% @tweet.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -10,14 +11,9 @@
     </div>
   <% end %>
   
-  <div class="tweet">
-    <%= form.label :content %>
-    <% if @tweet.errors.messages[:content].size == 0 %>
-      <br>
-    <% end %>
-    <%= form.text_field :content %>
+  <div class="dialog-input">
+    <%= form.text_area :content, class: 'dialog-text' %>
   </div>
-  <%= form.submit %>
+  <%= form.submit "投稿", class: 'btn' %>
 <% end %>
-
-<%= link_to "つぶやき一覧画面にもどる", tweets_path %>
+</div>

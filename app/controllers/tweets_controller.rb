@@ -1,6 +1,10 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   
+  def about
+    render 'about'
+  end
+  
   def index
     @tweets = Tweet.order(:created_at)
   end
